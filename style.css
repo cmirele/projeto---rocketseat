@@ -10,22 +10,27 @@
   --text-color: white;
   --bg-color: black;
   --button-color: rgba(255, 255, 255, 0.05);
+  --profile-border: rgba(145, 91, 233, 1);
   --border-color: rgba(217, 217, 217, 1);
   --button-color-hover: rgba(145, 91, 233, 0.55);
   --social-color: rgba(145, 91, 233, 0.55);
   --highlight-color: rgba(255, 255, 255, 0.2);
-  --switch-bg-url: url(./assets/moon-stars.svg);
+  --switch-bg-url: url(./assets/moon.svg);
+  /* --profile-img: url(./assets/profile.dark.png); */
+  --switch-color: rgba(255, 255, 255, 0.1);
 }
 
 .light {
   --text-color: black;
-  --bg-color: white;
-  --button-color: rgba(0, 71, 255, 0.1);
+  --bg-color: rgba(255, 222, 199, 1);
+  --profile-border: rgba(0, 71, 255, 1);
+  --button-color: rgba(255, 107, 0, 0.2);
+  --button-color-hover: rgba(255, 107, 0, 0.6);
   --border-color: rgba(0, 0, 0, 0.8);
-  --button-color-hover: rgba(0, 71, 255, 0.51);
-  --social-color: rgba(0, 71, 255, 0.2);
-  --highlight-color: rgba(0, 0, 0, 0.1);
+  --social-color: rgba(255, 107, 0, 0.6);
   --switch-bg-url: url(./assets/sun.svg);
+  /* --profile-img: url(./assets/profile.light.png); */
+  --switch-color: rgba(255, 107, 0, 0.2);
 }
 
 body {
@@ -44,10 +49,11 @@ body {
 #profile {
   text-align: center;
   padding: 24px;
+  margin-left: 8px;
 }
 
 #profile img {
-  width: 110px;
+  width: 120px;
 }
 
 #profile p {
@@ -62,16 +68,16 @@ body {
 }
 
 #switch button {
+  border: 0;
   width: 32px;
   height: 32px;
-  background: white var(--switch-bg-url) no-repeat center;
-  border: 0;
   border-radius: 50%;
+  background: var(--switch-color) var(--switch-bg-url) no-repeat center;
 
-  position: absolute;
-  top: 50%;
   left: 0;
+  top: 50%;
   z-index: 1;
+  position: absolute;
   transform: translateY(-50%);
 }
 
@@ -81,17 +87,17 @@ body {
 }
 
 #switch span {
-  display: block;
   width: 64px;
   height: 24px;
-  background: var(--surface-color);
-  border: 1px solid var(--stroke-color);
-  backdrop-filter: blur(4px);
+  display: block;
+  border-radius: 100vh;
+  background: var(--switch-color);
   -webkit-backdrop-filter: blur(4px);
-  border-radius: 9999px;
+  border: 1px solid var(--border-color);
 }
 
 ul {
+  text-color: var(--text-color);
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -115,6 +121,7 @@ ul li a {
 
   text-decoration: none;
   letter-spacing: 1px;
+  /* font-weight: 600; */
   transition: background 0.2s;
 }
 
