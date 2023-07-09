@@ -9,25 +9,24 @@
 :root {
   --text-color: white;
   --bg-color: black;
-  --button-color: rgba(255, 255, 255, 0.05);
-  --profile-border: rgba(145, 91, 233, 1);
   --border-color: rgba(217, 217, 217, 1);
-  --button-color-hover: rgba(145, 91, 233, 0.55);
-  --social-color: rgba(145, 91, 233, 0.55);
-  --highlight-color: rgba(255, 255, 255, 0.2);
   --switch-bg-url: url(./assets/moon.svg);
+  --profile-border: rgba(145, 91, 233, 1);
   --switch-color: rgba(255, 255, 255, 0.1);
+  --social-color: rgba(145, 91, 233, 0.55);
+  --button-color: rgba(255, 255, 255, 0.05);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --button-color-hover: rgba(145, 91, 233, 0.55);
 }
 
 .light {
   --text-color: black;
-  --bg-color: rgba(255, 222, 199, 1);
-  --button-color: rgba(255, 107, 0, 0.2);
-  --button-color-hover: rgba(255, 107, 0, 0.6);
   --border-color: rgba(0, 0, 0, 0.8);
-  --social-color: rgba(255, 107, 0, 0.6);
+  --bg-color: rgba(255, 222, 199, 1);
   --switch-bg-url: url(./assets/sun.svg);
-  --switch-color: rgba(255, 107, 0, 0.2);
+  --button-color: rgba(255, 107, 0, 0.2);
+  --social-color: rgba(255, 107, 0, 0.6);
+  --button-color-hover: rgba(255, 107, 0, 0.6);
 }
 
 body {
@@ -69,18 +68,19 @@ body {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--switch-color) var(--switch-bg-url) no-repeat center;
+  background: var(--button-color) var(--switch-bg-url) no-repeat center;
 
   left: 0;
   top: 50%;
   z-index: 1;
   position: absolute;
   transform: translateY(-50%);
+
+  animation: slide-back 0.3s;
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.3s forwards;
 }
 
 #switch span {
@@ -88,9 +88,17 @@ body {
   height: 24px;
   display: block;
   border-radius: 100vh;
-  background: var(--switch-color);
+  background: var(--button-color);
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid var(--border-color);
+}
+
+#switch button:hover {
+  outline: 6px solid var(--highlight-color);
+}
+
+.light #switch button:hover {
+  outline: 6px solid var(--button-color);
 }
 
 ul {
@@ -143,4 +151,22 @@ ul li a:hover {
 
 #social-links a:hover {
   background: var(--social-color);
+}
+
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
 }
